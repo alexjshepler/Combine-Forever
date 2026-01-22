@@ -1,0 +1,51 @@
+app:
+  name: "Combine-Forever"
+  environment: dev
+
+routing:
+  # Try in order
+  providers: [llama, ollama]
+
+  # When to fall back
+  fallback_on:
+    - timeout
+    - connection_error
+    - service_unavailable
+    - rate_limit
+    - insufficient_quota
+
+  # Token limits
+  tokens:
+    max_output_tokens: 200
+    max_input_tokens: 1200
+
+providers:
+  llama:
+    type: llama
+    
+    api_key_env: LLAMA_API_KEY
+    model: Llama-4-Maverick-17B-128E-Instruct-FP8
+
+    timeout_ms: 12000
+
+    params:
+      temperature: 0.2
+      top_p: 0.9
+
+  ollama:
+    type: ollama
+
+    base_url: http://127.0.0.1:11434
+    model: llama3.1:8b
+
+    timeout_ms: 12000
+
+    params:
+      temperature: 0.2
+      top_p: 0.9
+
+prompts:
+  combine_v1:
+    system_path: prompts/combine_system.txt
+    user_path: prompts/combine_user.txt
+    schema_path: prompts/combine_schema.txt
