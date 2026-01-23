@@ -48,19 +48,6 @@ TUI panes:
     * *Recenter Workspace*: This button will reset the zoom of the workspace and reset the position of the view of the working area to the default position.
 
 
-A clean TUI typically has three panes:
-
-1. **Inventory**: list of discovered elements (left).
-2. **Workbench**: two selected items and the result (center).
-3. **Log/History**: recent combinations and errors (right or bottom).
-
-**Recommended layout behavior**
-
-- Inventory is scrollable and filterable with a search prompt.
-- Workbench highlights current selection and shows the result in a large
-  banner (even in a text UI this feels rewarding).
-- History keeps a short list of the last 10–20 actions.
-
 ## TUI libraries
 
 If you are in Python, `textual` is modern and good-looking. For Rust, `ratatui`
